@@ -1,5 +1,35 @@
 server:
   port: 8081
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  shareSecurityContext: true
+
 spring:
   application:
     name: edge-service
+
+zuul:
+  routes:
+    home:
+      path: /home
+      url: http://localhost:8080
+    beer-catalog-service:
+      path: /beers
+      url: http://localhost:8080
+
+security:
+  oauth2:
+    client:
+      client-id:
+      client-secret:
+      access-token-uri: https://dev-921946.oktapreview.com/oauth2/default/v1/token
+      user-authorization-uri: https://dev-921946.oktapreview.com/oauth2/default/v1/authorize
+      scope: openid profile email
+    resource:
+      user-info-uri: https://dev-921946.oktapreview.com/oauth2/default/v1/userinfo
+      token-info-uri: https://dev-921946.oktapreview.com/oauth2/default/v1/introspect
+      prefer-token-info: false
