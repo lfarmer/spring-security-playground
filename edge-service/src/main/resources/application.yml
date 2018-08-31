@@ -17,18 +17,24 @@ zuul:
     home:
       path: /home
       url: http://localhost:8080
+
     beer-catalog-service:
       path: /beers
       url: http://localhost:8080
 
+  sensitive-headers: Cookie,Set-Cookie
+
 security:
   oauth2:
     client:
-      client-id:
-      client-secret:
+      client-id: 0oafz69304eQHMyGn0h7
+      client-secret: tOCDZuXlUp_9rquk6rJGJsk5hdcc0P-zAqvRKpd0
       access-token-uri: https://dev-921946.oktapreview.com/oauth2/default/v1/token
       user-authorization-uri: https://dev-921946.oktapreview.com/oauth2/default/v1/authorize
-      scope: openid profile email
+      scope:
+        - openid
+        - profile
+        - email
     resource:
       user-info-uri: https://dev-921946.oktapreview.com/oauth2/default/v1/userinfo
       token-info-uri: https://dev-921946.oktapreview.com/oauth2/default/v1/introspect
